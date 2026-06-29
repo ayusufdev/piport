@@ -15,3 +15,9 @@ app.use("/api/auth", authRoutes);
 app.listen(5000, () => {
   console.log("PiPort backend running");
 });
+app.get("/", (req, res) => {
+  res.json({
+    message: "PiPort API Running",
+    status: "ok",
+  });
+});
