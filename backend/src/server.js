@@ -1,23 +1,21 @@
-// backend/src/server.js
-
 const express = require("express");
 const cors = require("cors");
-
-const authRoutes = require("./routes/auth");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
+const authRoutes = require("./routes/auth");
+
 app.use("/api/auth", authRoutes);
+
+app.get("/", (req, res) => {
+  res.json({
+    status: "PiPort Backend Running",
+  });
+});
 
 app.listen(5000, () => {
   console.log("PiPort backend running");
-});
-app.get("/", (req, res) => {
-  res.json({
-    message: "PiPort API Running",
-    status: "ok",
-  });
 });
